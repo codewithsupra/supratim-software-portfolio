@@ -1,5 +1,5 @@
 import React, { useState,useRef,useEffect } from 'react';
-import { motion,AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 
 interface ElasticHueSliderProps {
@@ -334,7 +334,7 @@ export const HeroSection: React.FC = () => {
   // State for the lightning hue
   const [lightningHue, setLightningHue] = useState(220); // Default hue
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -345,7 +345,7 @@ export const HeroSection: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
