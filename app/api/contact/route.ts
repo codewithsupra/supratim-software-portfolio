@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Constructed per-request: `new Resend()` throws when the key is absent, which
+// broke `next build` on any machine without RESEND_API_KEY set.
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
 
 export async function POST(request: NextRequest) {
   let body: unknown;
@@ -27,6 +33,12 @@ export async function POST(request: NextRequest) {
   const e = email.trim();
   const m = message.trim();
 
+  const resend = getResend();
+  if (!resend) {
+    console.error("RESEND_API_KEY is not set; cannot send contact email.");
+    return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 500 });
+  }
+
   try {
     await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
@@ -42,7 +54,7 @@ export async function POST(request: NextRequest) {
           <p><strong>Message:</strong></p>
           <p style="background:#f9fafb;border-left:4px solid #7c3aed;padding:12px 16px;border-radius:4px;white-space:pre-wrap">${m}</p>
           <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0"/>
-          <p style="color:#9ca3af;font-size:12px">Sent via supratimsarkar.dev</p>
+          <p style="color:#9ca3af;font-size:12px">Sent via supratim-software-portfolio.vercel.app</p>
         </div>
       `,
     });

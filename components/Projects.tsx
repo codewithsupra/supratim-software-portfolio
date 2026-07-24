@@ -27,8 +27,8 @@ export default function Projects() {
             </span>
           </h2>
           <p className="mt-4 text-zinc-500 text-sm max-w-md leading-relaxed">
-            Three live, production full-stack products — architecture, infrastructure, and
-            deployment — full ownership.
+            Six deployed systems, built solo end to end — architecture, infrastructure, and
+            deployment. Every one is live and open source; click through and check.
           </p>
         </div>
 

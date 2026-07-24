@@ -353,7 +353,7 @@ export default function Hero() {
               staggerFrom="center"
               repeatDelay={0.5}
             >
-              Software Engineer · Local-First · AI Engineering · Full-Stack TypeScript
+              Software Engineer · Distributed Systems · Full-Stack TypeScript · AI
             </BreathingText>
           </motion.h2>
 
@@ -362,7 +362,7 @@ export default function Hero() {
             className="text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed"
           >
             M.Sc. Software Engineering (VU Amsterdam × UvA). AWS SAA-C03 certified.
-            Building fast, collaborative, and intelligent systems.
+            Six deployed systems, two merged pull requests into Tiptap — all of it public.
           </motion.p>
 
           <motion.div

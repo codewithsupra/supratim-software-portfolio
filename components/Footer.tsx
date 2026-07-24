@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <p className="text-white font-black text-xl tracking-tight">Supratim Sarkar</p>
             <p className="text-zinc-600 text-sm mt-1">
-              Software Engineer · Local-First · AI Engineering · Full-Stack
+              Software Engineer · Distributed Systems · Full-Stack TypeScript
             </p>
           </div>
 

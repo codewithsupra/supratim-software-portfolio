@@ -38,12 +38,13 @@ export default function About() {
           className="mb-16 max-w-2xl"
         >
           <p className="text-zinc-300 text-xl leading-relaxed">
-            The rarest thing in engineering isn&apos;t brilliance — it&apos;s someone who can
-            take a half-formed idea from whiteboard to production without losing momentum or
-            quality. I&apos;ve shipped real-time collaborative editors, AI-powered pipelines,
-            and accessibility tooling — independently, on time, in public. If you want someone
-            who thinks in systems, writes code that lasts, and doesn&apos;t need hand-holding to
-            deliver, that&apos;s the work I do.
+            I like the problems that only show up once something is actually running — two
+            workers racing for the same job, a process dying mid-step, a queue that has to
+            survive a restart. So I build them from the primitives: an atomic{" "}
+            <span className="text-white">findOneAndUpdate</span> in Mongo, a{" "}
+            <span className="text-white">SKIP LOCKED</span> claim in Postgres, and a chaos test
+            to prove it holds. Everything on this page is deployed and open source — nothing
+            here is a screenshot of a thing that used to work.
           </p>
         </InView>
 
@@ -76,25 +77,26 @@ export default function About() {
             <p className="text-zinc-400 leading-relaxed">
               I interned at{" "}
               <span className="text-white font-semibold">Mendix (Siemens)</span>, shipping
-              production React/TypeScript to thousands of enterprise developers globally. Since then
-              I&apos;ve independently designed, built, and deployed three live full-stack products
-              covering local-first architecture, streaming AI infrastructure, and AI-powered
-              accessibility auditing.
+              production React/TypeScript into the drag-and-drop microflow editor used by
+              thousands of enterprise developers, migrating legacy JavaScript to TypeScript at
+              ~85% test coverage and full WCAG 2.1 compliance. Since then I&apos;ve designed,
+              built, and deployed six systems solo — monitoring, load verification, durable job
+              orchestration, and AI tooling.
             </p>
             <p className="text-zinc-400 leading-relaxed">
-              I&apos;m an open-source contributor to{" "}
-              <span className="text-white font-semibold">Tiptap (37k ★)</span> and{" "}
-              <span className="text-white font-semibold">Infisical (27k ★)</span>, fixing bugs at
-              the ProseMirror internals level.
+              I&apos;ve had two pull requests merged into{" "}
+              <span className="text-white font-semibold">Tiptap (37k stars)</span>, the
+              rich-text editor framework — both bug fixes at the ProseMirror and
+              markdown-tokenizer level, reviewed and merged by the maintainers.
             </p>
 
             {/* Highlights */}
             <ul className="mt-6 space-y-3" aria-label="Key highlights">
               {[
-                "Local-first systems with Yjs CRDTs & IndexedDB",
-                "Streaming AI pipelines using ReadableStream",
-                "Serverless Chromium + Claude Vision for AI auditing",
-                "Stripe billing with HMAC-verified webhooks",
+                "Distributed job schedulers built on database primitives, not queue libraries",
+                "Crash-safety proven by chaos tests, not asserted in a README",
+                "Streaming AI pipelines and tool-calling agents over ReadableStream",
+                "Progressive enhancement that still works with JavaScript disabled",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-zinc-400 text-sm">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-500 flex-shrink-0" aria-hidden="true" />

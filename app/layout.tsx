@@ -23,16 +23,16 @@ export const metadata: Metadata = {
   },
   title: "Supratim Sarkar — Software Engineer",
   description:
-    "Software Engineer specialising in local-first systems, AI engineering, and full-stack TypeScript. M.Sc. Software Engineering (VU Amsterdam × UvA). AWS SAA-C03 certified.",
+    "Software engineer building distributed systems and full-stack TypeScript — monitoring, durable job queues, and AI tooling, all deployed and open source. M.Sc. Software Engineering (VU Amsterdam × UvA). AWS SAA-C03 certified.",
   keywords: [
     "Supratim Sarkar",
     "Software Engineer",
     "TypeScript",
     "React",
     "Next.js",
-    "Local-First",
-    "Yjs",
-    "CRDTs",
+    "Node.js",
+    "PostgreSQL",
+    "Distributed Systems",
     "AI Engineering",
     "Full-Stack",
   ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Supratim Sarkar — Software Engineer",
     description:
-      "Software Engineer specialising in local-first systems, AI engineering, and full-stack TypeScript.",
+      "Software engineer building distributed systems and full-stack TypeScript. Six deployed, open-source systems. Two merged pull requests into Tiptap.",
     type: "website",
     locale: "en_US",
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Supratim Sarkar — Software Engineer",
     description:
-      "Software Engineer specialising in local-first systems, AI engineering, and full-stack TypeScript.",
+      "Software engineer building distributed systems and full-stack TypeScript. Six deployed, open-source systems. Two merged pull requests into Tiptap.",
   },
 };
 
@@ -56,7 +56,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Supratim Sarkar",
-  url: "https://supratimsarkar.dev",
+  url: "https://supratim-software-portfolio.vercel.app",
   sameAs: [
     "https://github.com/codewithsupra",
     "https://linkedin.com/in/supratimsarkar99",
@@ -66,7 +66,7 @@ const personJsonLd = {
     { "@type": "CollegeOrUniversity", name: "VU Amsterdam" },
     { "@type": "CollegeOrUniversity", name: "University of Amsterdam" },
   ],
-  knowsAbout: ["TypeScript", "React", "Next.js", "Local-First Systems", "AI Engineering", "CRDTs"],
+  knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Distributed Systems", "AI Engineering"],
 };
 
 export default function RootLayout({

@@ -18,7 +18,7 @@ Personal portfolio site for Supratim Sarkar, Software Engineer. Built with Next.
 ### Sections
 
 - **Hero** — WebGL shader + lightning canvas background, Framer Motion entrance animations, breathing-text subtitle
-- **About** — Bio, headshot, open-source contributions (Tiptap, Infisical), full tech skills grid
+- **About** — Bio, headshot, open-source contributions (Tiptap), full tech skills grid
 - **Projects** — Full-bleed 3-column image grid; hover reveals project title + "View Details" CTA
 - **Contact** — `useActionState` form with field validation, honeypot spam protection, and a Next.js API route stub ready for an email provider post-deploy
 - **Footer** — Dynamic year, social links (GitHub, LinkedIn, Email)
@@ -36,9 +36,14 @@ Each project page includes:
 
 | Project | Stack | Live |
 |---|---|---|
-| **FounderOS** — AI Chief of Staff for founders | Next.js 16, React 19, OpenRouter/GPT-4o, Stripe, InsForge | [v32fvcce.insforge.site](https://v32fvcce.insforge.site/) |
-| **Anchor** — Offline-first notes with CRDT sync | Yjs, Tiptap, IndexedDB, y-websocket, Next.js | [anchor-ai-indol.vercel.app](https://anchor-ai-indol.vercel.app/) |
-| **Aria** — AI accessibility auditor | Claude Vision API, axe-core, Puppeteer, Next.js, Neon | [aria-acess.vercel.app](https://aria-acess.vercel.app/) |
+| **Pulse** — Real-time API uptime & incident monitoring | Node.js, Express, MongoDB, Socket.io, worker_threads, Docker | [pulse-wy6e.onrender.com](https://pulse-wy6e.onrender.com) |
+| **Assay** — Verified proof-of-skill for deployed projects | Node.js, PostgreSQL, autocannon, Socket.io, Ed25519 | [assay-etaq.onrender.com](https://assay-etaq.onrender.com) |
+| **OSS Finder** — Open-source contribution discovery | React 19, Redux Toolkit, RTK Query, Clerk, Vercel Functions | [oss-finder-phi.vercel.app](https://oss-finder-phi.vercel.app) |
+| **Durable Agent Engine** — Fault-tolerant LLM agent orchestrator | Node.js, PostgreSQL, WebSockets, Fly.io | [live demo](https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev) |
+| **PantryChef** — AI kitchen assistant | React Router v7, Prisma, PostgreSQL, Tailwind CSS | [pantry-chef-7s80.onrender.com](https://pantry-chef-7s80.onrender.com) |
+| **FounderOS** — AI chief of staff for founders | Next.js 16, React 19, OpenRouter/GPT-4o, Stripe, Postgres | [founder-os.insforge.site](https://founder-os.insforge.site) |
+
+Every live URL above is checked before each deploy — a dead link on a portfolio is worse than no link.
 
 ---
 
@@ -86,7 +91,7 @@ lib/
   data.ts             # All project content, stack, URLs, images — single source of truth
 public/
   *.png / *.jpg       # Portfolio screenshots per project
-  *_pitch.mp4         # Demo videos (FounderOS, Anchor, Aria)
+  *_pitch.mp4         # Demo video (FounderOS)
   favicon.svg         # Gradient SVG favicon
 ```
 
