@@ -1,72 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/components/Navbar";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { site } from "@/lib/content";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// Clash Display is served from Fontshare, not Google Fonts, so it is
+// self-hosted (ITF Free Font License permits this).
+const clashDisplay = localFont({
+  src: [
+    { path: "./fonts/ClashDisplay-Medium.woff2", weight: "500" },
+    { path: "./fonts/ClashDisplay-Semibold.woff2", weight: "600" },
+    { path: "./fonts/ClashDisplay-Bold.woff2", weight: "700" },
+  ],
+  variable: "--font-clash-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
-  },
-  title: "Supratim Sarkar — Software Engineer",
-  description:
-    "Software engineer building distributed systems and full-stack TypeScript — monitoring, durable job queues, and AI tooling, all deployed and open source. M.Sc. Software Engineering (VU Amsterdam × UvA). AWS SAA-C03 certified.",
-  keywords: [
-    "Supratim Sarkar",
-    "Software Engineer",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "PostgreSQL",
-    "Distributed Systems",
-    "AI Engineering",
-    "Full-Stack",
-  ],
-  authors: [{ name: "Supratim Sarkar", url: "https://github.com/codewithsupra" }],
-  openGraph: {
-    title: "Supratim Sarkar — Software Engineer",
-    description:
-      "Software engineer building distributed systems and full-stack TypeScript. Six deployed, open-source systems. Two merged pull requests into Tiptap.",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Supratim Sarkar — Software Engineer",
-    description:
-      "Software engineer building distributed systems and full-stack TypeScript. Six deployed, open-source systems. Two merged pull requests into Tiptap.",
-  },
-};
-
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Supratim Sarkar",
-  url: "https://supratim-software-portfolio.vercel.app",
-  sameAs: [
-    "https://github.com/codewithsupra",
-    "https://linkedin.com/in/supratimsarkar99",
-  ],
-  jobTitle: "Software Engineer",
-  alumniOf: [
-    { "@type": "CollegeOrUniversity", name: "VU Amsterdam" },
-    { "@type": "CollegeOrUniversity", name: "University of Amsterdam" },
-  ],
-  knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Distributed Systems", "AI Engineering"],
+  title: site.title,
+  description: site.description,
 };
 
 export default function RootLayout({
@@ -75,19 +36,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white">
-        <Navbar />
+    <html lang="en" className={`${inter.variable} ${clashDisplay.variable}`}>
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:text-accent"
+        >
+          Skip to content
+        </a>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

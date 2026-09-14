@@ -1,25 +1,22 @@
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Projects from "@/components/Projects";
-import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
+import { Hero } from "@/components/hero";
+import { About } from "@/components/about";
+import { Projects } from "@/components/projects";
+import { Contact } from "@/components/contact";
+import { NebulaProvider } from "@/components/nebula-uniforms";
+import { ShaderBackground } from "@/components/shader-background";
 
 export default function Home() {
   return (
-    <>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-violet-600 focus:text-white focus:rounded-lg focus:font-semibold"
-      >
-        Skip to main content
-      </a>
-      <main id="main-content">
+    <main id="main">
+      {/* The nebula is the page's ground — a fixed layer behind every part,
+          receding to texture after the hero (MOTION_BRIEF: Look/Ground). */}
+      <NebulaProvider>
+        <ShaderBackground />
         <Hero />
         <About />
         <Projects />
-        <ContactForm />
-      </main>
-      <Footer />
-    </>
+        <Contact />
+      </NebulaProvider>
+    </main>
   );
 }

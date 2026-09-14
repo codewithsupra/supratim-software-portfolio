@@ -1,49 +1,32 @@
-"use client";
+import { projects, projectsSection } from "@/lib/content";
+import { ProjectCard } from "@/components/project-card";
+import { SectionHeading } from "@/components/section-heading";
 
-import { projects } from "@/lib/data";
-import ProjectCard from "./ProjectCard";
-
-export default function Projects() {
+export function Projects() {
   return (
     <section
-      id="projects"
-      className="bg-[#0a0a0a] py-24 md:py-32"
-      aria-labelledby="projects-heading"
+      id="work"
+      aria-labelledby="work-heading"
+      className="w-full py-24 sm:py-32"
     >
-      <div className="px-6 md:px-12 lg:px-24">
-        {/* Header */}
-        <div className="mb-12">
-          <p className="text-violet-400 text-sm font-mono tracking-[0.25em] uppercase mb-4">
-            Work
+      <div className="mx-auto w-full max-w-[68rem] px-6 sm:px-10">
+        <div className="border-t border-muted/20 pt-10">
+          <p className="mono-label text-muted">
+            02<span aria-hidden="true"> / </span>
+            {projectsSection.eyebrow}
           </p>
-          <h2
-            id="projects-heading"
-            className="text-[clamp(2.5rem,6vw,5rem)] font-black leading-[0.95] tracking-tight text-white"
-          >
-            Independent
-            <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-400 to-indigo-400">
-              Engineering
-            </span>
-          </h2>
-          <p className="mt-4 text-zinc-500 text-sm max-w-md leading-relaxed">
-            Six deployed systems, built solo end to end — architecture, infrastructure, and
-            deployment. Every one is live and open source; click through and check.
-          </p>
+          <SectionHeading id="work-heading">
+            {projectsSection.heading}
+          </SectionHeading>
         </div>
 
-        {/* 3-column grid */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          role="list"
-          aria-label="Projects list"
-        >
+        <ul className="mt-20 divide-y divide-muted/20 border-t border-muted/20">
           {projects.map((project) => (
-            <div key={project.slug} role="listitem">
+            <li key={project.index}>
               <ProjectCard project={project} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

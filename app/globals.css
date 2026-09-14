@@ -1,89 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --bg: #05030c;
+  --surface: #0d0a18;
+  --fg: #edeaf5;
+  --muted: #8b84a8;
+  --indigo: #2a1b5e;
+  --violet: #6b3fa0;
+  --magenta: #a6329b;
+  --accent: #4dd8e8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-indigo: var(--indigo);
+  --color-violet: var(--violet);
+  --color-magenta: var(--magenta);
+  --color-accent: var(--accent);
+  --font-display: var(--font-clash-display);
+  --font-body: var(--font-inter);
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --radius-card: 12px;
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: dark;
-}
+/* The hero scroll hint's travelling segment — slides through its
+   overflow-clipped track, top to bottom, on a slow loop. Gated behind
+   motion-safe where it's used. */
+@theme {
+  --animate-scroll-hint: scroll-hint 2.4s ease-in-out infinite;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Hide horizontal scrollbar on project card rail */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Marquee animation */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 28s linear infinite;
-}
-
-/* Fade-in-up entrance */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes scroll-hint {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(300%);
+    }
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* Small uppercase micro-labels — eyebrows, nav, tags, form labels. */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
-
-/* Radial gradient overlay for hero */
-.bg-radial-gradient {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 58, 237, 0.12), transparent);
+/* The About beats fall back to the vertical list unless the timeline can
+   earn its pin: desktop width, a fine hover-capable pointer, and motion
+   allowed. Must stay the exact complement of the gsap.matchMedia condition
+   in about-timeline.tsx. */
+@custom-variant beats-static {
+  @media (width < 64rem),
+    (prefers-reduced-motion: reduce),
+    (hover: none),
+    (pointer: coarse) {
+    @slot;
+  }
 }
 
-/* Focus ring polish — only show on keyboard nav */
-:focus:not(:focus-visible) {
-  outline: none;
+/* Nav and footer links take a hairline underline that sweeps in on hover —
+   in from the left, out through the right (MOTION_BRIEF: Site-wide). Sits
+   on the link itself, or on a span inside one when only the label should
+   underline (e.g. icon links). Instant under prefers-reduced-motion. */
+@utility link-sweep {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  &:hover::after,
+  &:focus-visible::after,
+  &[aria-current]::after,
+  :where(a, button):where(:hover, :focus-visible) &::after {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      transition: none;
+    }
+  }
 }
 
-/* Screen-reader only utility (supplement Tailwind's sr-only) */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+@utility text-outline {
+  -webkit-text-stroke: 2px var(--color-fg);
+  color: transparent;
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(90deg, var(--color-violet), var(--color-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  html {
+    /* Keep anchor targets clear of the fixed header. */
+    scroll-padding-top: 5rem;
+    /* The page is a vertical scroll, always — nothing (drifting wordmark
+       masks, canvas rounding in device emulators) may widen the document. */
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-bg text-fg font-body antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
