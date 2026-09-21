@@ -5,9 +5,9 @@ Every claim traces to a verified fact; every URL was loaded before it went in.
 
 ## Hero
 
-**Eyebrow:** Backend Engineer · Ex-Mendix (Siemens) · Muscat, Oman
+**Eyebrow:** Software Engineer · Ex-Mendix (Siemens) · Muscat, Oman
 **Name:** Supratim Sarkar
-**Subhead:** Building backend systems that stay correct when workers crash, jobs collide, and someone checks the numbers.
+**Subhead:** Building software that stays correct when workers crash, jobs collide, and someone checks the numbers.
 
 ## About
 
@@ -26,20 +26,20 @@ Every claim traces to a verified fact; every URL was loaded before it went in.
 I studied Computer Science at VIT, then completed a joint M.Sc. in Software Engineering & Green IT at VU Amsterdam and the University of Amsterdam. I'm also an AWS Certified Solutions Architect – Associate.
 
 #### 02 — First production code
-At Mendix, a Siemens company, I shipped React and TypeScript into a drag-and-drop microflow editor used by thousands of enterprise developers — migrating core modules to TypeScript at around 85% test coverage without pausing releases.
+At Mendix, a Siemens company, I interned in a cross-functional team on the React and TypeScript UI of a drag-and-drop microflow editor — migrating parts of it to TypeScript, writing Jest and React Testing Library tests, and fixing bugs from the team backlog, with every change reviewed by senior engineers.
 
 #### 03 — Open source
-I landed two pull requests in Tiptap, the rich-text framework with 38K stars and 16.8M weekly downloads — fixing a crash that had been open for seven months and a defect that silently stripped formatting from nested lists.
+I landed two pull requests in Tiptap, the rich-text framework with 38K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.
 
 #### 04 — The craft
-Since January 2026 I've built and shipped six systems solo. The thread through all of them is correctness under failure: exactly-once scheduling, crash recovery, and chaos tests that prove the guarantee holds.
+After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped six systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.
 
 #### 05 — What's next
-I'm looking for a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles, or relocating to Bengaluru immediately.
+I'm looking for a junior or mid-level role on a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles worldwide, or on-site in Oman.
 
 ### Open Source Panel
 **Label:** Open source · **Title:** Tiptap: Two merged pull requests
-**Blurb:** Fixed a Link-extension crash that had gone unresolved for seven months, and a markdown-parser defect that silently stripped bold and italic from nested lists. Both reviewed and merged by the maintainers.
+**Blurb:** Fixed a Link-extension bug that had gone unresolved for seven months, and a Markdown-parser defect that silently stripped bold and italic from indented numbered lists. Both reviewed and merged by Tiptap's engineers.
 **URL:** https://github.com/ueberdosis/tiptap/pulls?q=is%3Apr+author%3Acodewithsupra+is%3Amerged · **Link label:** View the pull requests
 
 ### Now Panel

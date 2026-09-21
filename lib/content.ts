@@ -14,10 +14,10 @@ export interface Project {
 }
 
 export const hero = {
-  eyebrow: "Backend Engineer · Ex-Mendix (Siemens) · Muscat, Oman",
+  eyebrow: "Software Engineer · Ex-Mendix (Siemens) · Muscat, Oman",
   name: { first: "Supratim", second: "Sarkar" },
   subhead:
-    "Building backend systems that stay correct when workers crash, jobs collide, and someone checks the numbers.",
+    "Building software that stays correct when workers crash, jobs collide, and someone checks the numbers.",
   scrollHint: "Scroll",
 };
 
@@ -38,22 +38,22 @@ export const about = {
     {
       index: "02",
       title: "First production code",
-      body: "At Mendix, a Siemens company, I shipped React and TypeScript into a drag-and-drop microflow editor used by thousands of enterprise developers — migrating core modules to TypeScript at around 85% test coverage without pausing releases.",
+      body: "At Mendix, a Siemens company, I interned in a cross-functional team on the React and TypeScript UI of a drag-and-drop microflow editor — migrating parts of it to TypeScript, writing Jest and React Testing Library tests, and fixing bugs from the team backlog, with every change reviewed by senior engineers.",
     },
     {
       index: "03",
       title: "Open source",
-      body: "I landed two pull requests in Tiptap, the rich-text framework with 38K stars and 16.8M weekly downloads — fixing a crash that had been open for seven months and a defect that silently stripped formatting from nested lists.",
+      body: "I landed two pull requests in Tiptap, the rich-text framework with 38K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.",
     },
     {
       index: "04",
       title: "The craft",
-      body: "Since January 2026 I've built and shipped six systems solo. The thread through all of them is correctness under failure: exactly-once scheduling, crash recovery, and chaos tests that prove the guarantee holds.",
+      body: "After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped six systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.",
     },
     {
       index: "05",
       title: "What's next",
-      body: "I'm looking for a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles, or relocating to Bengaluru immediately.",
+      body: "I'm looking for a junior or mid-level role on a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles worldwide, or on-site in Oman.",
     },
   ],
   latestCourse: {
@@ -61,7 +61,7 @@ export const about = {
     // Rendered as two lines, broken after the colon.
     titleLines: ["Tiptap:", "Two merged pull requests"],
     blurb:
-      "Fixed a Link-extension crash that had gone unresolved for seven months, and a markdown-parser defect that silently stripped bold and italic from nested lists. Both reviewed and merged by the maintainers.",
+      "Fixed a Link-extension bug that had gone unresolved for seven months, and a Markdown-parser defect that silently stripped bold and italic from indented numbered lists. Both reviewed and merged by Tiptap's engineers.",
     url: "https://github.com/ueberdosis/tiptap/pulls?q=is%3Apr+author%3Acodewithsupra+is%3Amerged",
     linkLabel: "View the pull requests",
   },
@@ -99,7 +99,7 @@ export const projects: Project[] = [
     title: "Durable Agent Engine",
     tags: ["Backend", "Queues", "2026"],
     description:
-      "A fault-tolerant engine for multi-step LLM agent workflows, built on Postgres SKIP LOCKED — chaos-tested by killing workers mid-task.",
+      "A crash-safe engine for multi-step AI-agent workflows, built on Postgres SKIP LOCKED — chaos-tested with 187 random worker kills across 20 runs.",
     tech: ["Node.js", "PostgreSQL", "WebSockets"],
     liveUrl:
       "https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev",
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     title: "Pulse",
     tags: ["Backend", "Monitoring", "2026"],
     description:
-      "Uptime and incident monitoring where each health check runs exactly once across any number of instances, with live status over WebSockets.",
+      "Uptime and incident monitoring where only one instance runs each health check, however many are deployed, with live status over WebSockets and 19 integration tests.",
     tech: ["Node.js", "MongoDB", "Socket.io", "Docker"],
     liveUrl: "https://pulse-wy6e.onrender.com",
     githubUrl: "https://github.com/codewithsupra/pulse",
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     title: "Anchor",
     tags: ["Offline-First", "CRDTs", "2026"],
     description:
-      "A note editor with conflict-free multi-device sync that never loses an edit, online or offline.",
+      "A local-first note editor that saves every keystroke in the browser as a CRDT, works offline, and syncs open tabs live with no server.",
     tech: ["TypeScript", "Yjs", "IndexedDB", "Tiptap"],
     liveUrl: "https://anchor-ai-indol.vercel.app",
     githubUrl: "https://github.com/codewithsupra/anchor.ai",
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     title: "Aria",
     tags: ["Accessibility", "AI", "2026"],
     description:
-      "WCAG auditing that pairs axe-core rule checks with visual analysis of the rendered page, returning a full report in under ten seconds.",
+      "WCAG auditing that pairs axe-core rule checks with GPT-4o Vision analysis of the rendered page, in one severity-graded report with suggested fixes.",
     tech: ["Next.js", "TypeScript", "Puppeteer", "axe-core"],
     liveUrl: "https://aria-acess.vercel.app",
     githubUrl: "https://github.com/codewithsupra/aria-acess.ai",
@@ -161,7 +161,7 @@ export const contact = {
   eyebrow: "Contact",
   heading: "Let's build something.",
   supporting:
-    "Hiring for a backend or full-stack role? I'm available now — remote, or on-site in Bengaluru.",
+    "Hiring for a frontend, backend or full-stack role? I'm available now — remote worldwide, or on-site in Oman.",
   email: "supratim347@gmail.com",
   location: "Muscat, Oman",
   form: {
@@ -228,9 +228,9 @@ export const footer = {
 export const site = {
   name: "Supratim Sarkar",
   logo: "SS",
-  title: "Supratim Sarkar — Backend Engineer",
+  title: "Supratim Sarkar — Software Engineer",
   description:
-    "Backend engineer building distributed systems that stay correct under failure. Six live systems, all open source.",
+    "Software engineer building web products that stay correct under failure. Six live systems, all open source.",
   githubUrl: "https://github.com/codewithsupra",
   navLinks: [
     { label: "About", href: "#about" },
