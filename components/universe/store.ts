@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from "react";
 
 /**
- * Two kinds of state live here. `state` is what the interface renders — which dossier is
- * open, what the ship is near — and changes a few times a minute, so React subscribes to
+ * Two kinds of state live here. `state` is what the interface renders — which world the
+ * camera is framing, where the ship is flying — and changes a few times a minute, so React subscribes to
  * it. `flight` is what the simulation reads and writes sixty times a second; putting that
  * through React would re-render the HUD every frame, so it is a plain mutable object the
  * HUD samples on its own animation frame.
@@ -85,6 +85,3 @@ export const flight = {
   /** Ship world position, for HUD readouts. */
   x: 0, y: 0, z: 0,
 };
-
-/** Label elements the canvas projects each frame, keyed by world id. */
-export const labelEls = new Map<string, HTMLElement>();

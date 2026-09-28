@@ -9,10 +9,12 @@ engineers. Its one job is to make that person get in touch.
 
 Two views of the same content (`lib/content.ts`):
 
-- `/` — a flyable Three.js solar system (`components/universe/`). The star is
-  About, each planet a project, the comet Tiptap, the relay station Contact.
-  The HUD star map is the accessible, keyboard-reachable way to every world;
-  WebGL-less browsers get the same dossiers without the scene.
+- `/` — a normal scrolling page (`components/universe/story.tsx`): hero,
+  about, one section per project, open source, contact — all readable with
+  no interaction. Behind it a Three.js solar system is scenery only (it never
+  takes the pointer): as each section reaches mid-viewport the ship flies to
+  its world — star = About, planets = projects, comet = Tiptap, relay =
+  Contact. Never hide content behind flying or clicking the scene.
 - `/classic` — the original four parts in page order: hero, about, project
   grid, contact. Linked as "Résumé view" from the universe's top bar.
 

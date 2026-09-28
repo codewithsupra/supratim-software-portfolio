@@ -3,8 +3,8 @@ import { projects, type Project } from "@/lib/content";
 import { looks, type Look } from "./palette";
 
 /**
- * The map of the system. Every destination is a world the ship can fly to; the kind
- * decides which dossier opens when it arrives. Orbits are deterministic functions of
+ * The map of the system. Every page section has a world the ship flies to while that
+ * section is on screen. Orbits are deterministic functions of
  * simulation time, so the star map, the labels and the autopilot all agree on where a
  * world is without any of them owning it.
  */

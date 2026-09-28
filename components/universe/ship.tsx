@@ -133,6 +133,7 @@ export function Ship({ exhaustCount }: { exhaustCount: number }) {
     let targetSpeed = 0;
     let warp = 0;
     const target = getState().target;
+    if (target && ship.docked && ship.docked !== target) ship.docked = null;
     if (target) {
       const w = worldsById[target]!;
       const tp = worldPos[target]!;
@@ -258,13 +259,16 @@ export function Ship({ exhaustCount }: { exhaustCount: number }) {
       // Dossier open: frame the world beside the panel, like a documentary establishing shot.
       const w = worldsById[panel]!;
       const p = worldPos[panel]!;
-      tmp.d.subVectors(ship.position, p).normalize().applyAxisAngle(UP, 0.75);
+      // Stand on the star's side of the world, turned a little off-axis: the star is behind
+      // the viewer instead of glaring past the planet, and the terminator reads as a crescent.
+      if (w.kind === "star") tmp.d.subVectors(ship.position, p).normalize().applyAxisAngle(UP, 0.75);
+      else tmp.d.copy(p).negate().normalize().applyAxisAngle(UP, 0.62);
       const reach = standoff(w) * 1.25;
       tmp.camPos.copy(p).addScaledVector(tmp.d, reach).addScaledVector(UP, w.size * 0.9 + 1.2);
       tmp.right.subVectors(p, tmp.camPos).normalize().cross(UP).normalize();
       const wide = size.width >= 900;
       tmp.look.copy(p);
-      if (wide) tmp.look.addScaledVector(tmp.right, w.size * 1.25 + (w.kind === "star" ? 6 : 1.5));
+      if (wide) tmp.look.addScaledVector(tmp.right, -(w.size * 1.25 + (w.kind === "star" ? 6 : 1.5)));
       else tmp.look.addScaledVector(UP, -(w.size * 1.1 + 1));
       cam.position.lerp(tmp.camPos, 1 - Math.exp(-2.2 * dt));
       tmp.lookSmooth.lerp(tmp.look, 1 - Math.exp(-3 * dt));

@@ -119,11 +119,11 @@ void main(){
     emit += uC * glow * (1.0 - day * 0.85) * 1.5;
   }
 
-  vec3 lit = col * (0.025 + day * 1.2);
+  vec3 lit = col * (0.025 + day * 0.85);
   vec3 H = normalize(L + V);
   lit += vec3(1.0) * pow(max(dot(N, H), 0.0), 70.0) * spec * day * 0.9;
   float fres = pow(1.0 - max(dot(N, V), 0.0), 3.0);
-  lit += uAtmo * fres * (0.12 + day * 1.1);
+  lit += uAtmo * fres * (0.1 + day * 0.7);
   gl_FragColor = vec4(lit + emit, 1.0);
 }
 `;
