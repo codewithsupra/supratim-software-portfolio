@@ -4,9 +4,21 @@ Standing orders. Not a plan — the plan is `MOTION_BRIEF.md`.
 
 ## Project
 
-A personal portfolio. Four parts in page order: hero, about, project grid,
-contact. Audience is teams hiring backend and full-stack engineers. Its one
-job is to make that person get in touch.
+A personal portfolio. Audience is teams hiring backend and full-stack
+engineers. Its one job is to make that person get in touch.
+
+Two views of the same content (`lib/content.ts`):
+
+- `/` — a flyable Three.js solar system (`components/universe/`). The star is
+  About, each planet a project, the comet Tiptap, the relay station Contact.
+  The HUD star map is the accessible, keyboard-reachable way to every world;
+  WebGL-less browsers get the same dossiers without the scene.
+- `/classic` — the original four parts in page order: hero, about, project
+  grid, contact. Linked as "Résumé view" from the universe's top bar.
+
+The universe uses only `three` and `@react-three/fiber` (post-processing is
+three's own `EffectComposer`). Scene colours live in
+`components/universe/palette.ts`; the UI still uses the CSS tokens only.
 
 ## Stack
 

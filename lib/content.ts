@@ -25,7 +25,7 @@ export const about = {
   eyebrow: "About me",
   heading: "An engineer who proves guarantees instead of asserting them.",
   stats: [
-    { value: "6", label: "Live systems, all open source" },
+    { value: "7", label: "Live systems, all open source" },
     { value: "2", label: "Merged pull requests in Tiptap" },
     { value: "38K", label: "Stars on the repo they landed in" },
   ],
@@ -48,7 +48,7 @@ export const about = {
     {
       index: "04",
       title: "The craft",
-      body: "After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped six systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.",
+      body: "After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped seven systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.",
     },
     {
       index: "05",
@@ -96,6 +96,18 @@ export const projects: Project[] = [
   },
   {
     index: "02",
+    title: "Lull",
+    tags: ["AI", "Web Audio", "2026"],
+    description:
+      "An AI-composed meditation studio: describe how you feel in one sentence and it writes a guided session, picks a breath pattern and plays a soundscape synthesized live with the Web Audio API — the app ships no audio files.",
+    tech: ["Next.js", "TypeScript", "InsForge", "Web Audio"],
+    liveUrl: "https://lull-ai.vercel.app",
+    githubUrl: "https://github.com/codewithsupra/lull",
+    screenshot: "/lull.jpg",
+    alt: "Lull — landing page with the wordmark over a particle field",
+  },
+  {
+    index: "03",
     title: "Durable Agent Engine",
     tags: ["Backend", "Queues", "2026"],
     description:
@@ -108,7 +120,7 @@ export const projects: Project[] = [
     alt: "Durable Agent Engine — live run dashboard for a multi-step agent workflow",
   },
   {
-    index: "03",
+    index: "04",
     title: "Pulse",
     tags: ["Backend", "Monitoring", "2026"],
     description:
@@ -120,7 +132,7 @@ export const projects: Project[] = [
     alt: "Pulse — uptime and incident monitoring dashboard",
   },
   {
-    index: "04",
+    index: "05",
     title: "OSS Finder",
     tags: ["Full-Stack", "Web App", "2026"],
     description:
@@ -132,7 +144,7 @@ export const projects: Project[] = [
     alt: "OSS Finder — ranked list of open-source projects for first contributions",
   },
   {
-    index: "05",
+    index: "06",
     title: "Anchor",
     tags: ["Offline-First", "CRDTs", "2026"],
     description:
@@ -144,7 +156,7 @@ export const projects: Project[] = [
     alt: "Anchor — offline-first note editor interface",
   },
   {
-    index: "06",
+    index: "07",
     title: "Aria",
     tags: ["Accessibility", "AI", "2026"],
     description:
@@ -230,7 +242,7 @@ export const site = {
   logo: "SS",
   title: "Supratim Sarkar — Software Engineer",
   description:
-    "Software engineer building web products that stay correct under failure. Six live systems, all open source.",
+    "Software engineer building web products that stay correct under failure. Seven live systems, all open source.",
   githubUrl: "https://github.com/codewithsupra",
   navLinks: [
     { label: "About", href: "#about" },

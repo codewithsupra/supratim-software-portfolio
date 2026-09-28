@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { site } from "@/lib/content";
 import "./globals.css";
 
@@ -38,15 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${clashDisplay.variable}`}>
       <body>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:text-accent"
-        >
-          Skip to content
-        </a>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

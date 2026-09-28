@@ -16,7 +16,7 @@ Every claim traces to a verified fact; every URL was loaded before it went in.
 
 ### Stats
 
-- **6** — Live systems, all open source
+- **7** — Live systems, all open source
 - **2** — Merged pull requests in Tiptap
 - **38K** — Stars on the repo they landed in
 
@@ -32,7 +32,7 @@ At Mendix, a Siemens company, I interned in a cross-functional team on the React
 I landed two pull requests in Tiptap, the rich-text framework with 38K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.
 
 #### 04 — The craft
-After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped six systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.
+After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped seven systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.
 
 #### 05 — What's next
 I'm looking for a junior or mid-level role on a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles worldwide, or on-site in Oman.
@@ -49,16 +49,17 @@ I'm looking for a junior or mid-level role on a team that cares about the parts 
 
 ## Projects
 
-Six projects, all live and open source. Order is intentional.
+Seven projects, all live and open source. Order is intentional.
 
 | # | Title | Tags | Live | GitHub | Screenshot |
 |---|---|---|---|---|---|
 | 01 | Verdict | LLM Evals · Statistics · 2026 | https://verdict-pi-peach.vercel.app | codewithsupra/verdict | `/verdict.jpg` |
-| 02 | Durable Agent Engine | Backend · Queues · 2026 | https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev | codewithsupra/durable-agent-engine | `/dae.jpg` |
-| 03 | Pulse | Backend · Monitoring · 2026 | https://pulse-wy6e.onrender.com | codewithsupra/pulse | `/pulse.jpg` |
-| 04 | OSS Finder | Full-Stack · Web App · 2026 | https://oss-finder-phi.vercel.app | codewithsupra/oss-finder | `/ossfinder.jpg` |
-| 05 | Anchor | Offline-First · CRDTs · 2026 | https://anchor-ai-indol.vercel.app | codewithsupra/anchor.ai | `/anchor.jpg` |
-| 06 | Aria | Accessibility · AI · 2026 | https://aria-acess.vercel.app | codewithsupra/aria-acess.ai | `/aria.jpg` |
+| 02 | Lull | AI · Web Audio · 2026 | https://lull-ai.vercel.app | codewithsupra/lull | `/lull.jpg` |
+| 03 | Durable Agent Engine | Backend · Queues · 2026 | https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev | codewithsupra/durable-agent-engine | `/dae.jpg` |
+| 04 | Pulse | Backend · Monitoring · 2026 | https://pulse-wy6e.onrender.com | codewithsupra/pulse | `/pulse.jpg` |
+| 05 | OSS Finder | Full-Stack · Web App · 2026 | https://oss-finder-phi.vercel.app | codewithsupra/oss-finder | `/ossfinder.jpg` |
+| 06 | Anchor | Offline-First · CRDTs · 2026 | https://anchor-ai-indol.vercel.app | codewithsupra/anchor.ai | `/anchor.jpg` |
+| 07 | Aria | Accessibility · AI · 2026 | https://aria-acess.vercel.app | codewithsupra/aria-acess.ai | `/aria.jpg` |
 
 Descriptions and tech stacks are in `lib/content.ts`.
 
