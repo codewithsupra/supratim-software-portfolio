@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: site.description,
 };
 
-/** The scrolling, text-first version: the same content as the universe, readable in seconds. */
+/** The scrolling, text-first version: the same content as the kiosk, readable in seconds. */
 export default function ClassicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>

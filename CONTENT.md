@@ -16,9 +16,9 @@ Every claim traces to a verified fact; every URL was loaded before it went in.
 
 ### Stats
 
-- **7** — Live systems, all open source
+- **5** — Live products, shipped in 2026
 - **2** — Merged pull requests in Tiptap
-- **38K** — Stars on the repo they landed in
+- **39K** — Stars on the repo they landed in (39,070 on 2026-11-18)
 
 ### Story Panels
 
@@ -29,10 +29,10 @@ I studied Computer Science at VIT, then completed a joint M.Sc. in Software Engi
 At Mendix, a Siemens company, I interned in a cross-functional team on the React and TypeScript UI of a drag-and-drop microflow editor — migrating parts of it to TypeScript, writing Jest and React Testing Library tests, and fixing bugs from the team backlog, with every change reviewed by senior engineers.
 
 #### 03 — Open source
-I landed two pull requests in Tiptap, the rich-text framework with 38K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.
+I landed two pull requests in Tiptap, the rich-text framework with 39K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.
 
 #### 04 — The craft
-After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped seven systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.
+After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I shipped a run of AI products in 2026. The thread through them is staying honest when things go wrong: Sponsorbound only calls an employer a licensed sponsor when the register link is confirmed, Verdict refuses to give a verdict it can't support, and Daybrief falls back to a rule-based plan when the model is down.
 
 #### 05 — What's next
 I'm looking for a junior or mid-level role on a team that cares about the parts demos skip. Based in Muscat, Oman — open to remote roles worldwide, or on-site in Oman.
@@ -49,17 +49,22 @@ I'm looking for a junior or mid-level role on a team that cares about the parts 
 
 ## Projects
 
-Seven projects, all live and open source. Order is intentional.
+Six projects, chosen by Supratim on 2026-11-18. Order is intentional. Every
+URL returned 200 on 2026-11-18. Facts come from each project's README.
 
 | # | Title | Tags | Live | GitHub | Screenshot |
 |---|---|---|---|---|---|
-| 01 | Verdict | LLM Evals · Statistics · 2026 | https://verdict-pi-peach.vercel.app | codewithsupra/verdict | `/verdict.jpg` |
-| 02 | Lull | AI · Web Audio · 2026 | https://lull-ai.vercel.app | codewithsupra/lull | `/lull.jpg` |
-| 03 | Durable Agent Engine | Backend · Queues · 2026 | https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev | codewithsupra/durable-agent-engine | `/dae.jpg` |
-| 04 | Pulse | Backend · Monitoring · 2026 | https://pulse-wy6e.onrender.com | codewithsupra/pulse | `/pulse.jpg` |
-| 05 | OSS Finder | Full-Stack · Web App · 2026 | https://oss-finder-phi.vercel.app | codewithsupra/oss-finder | `/ossfinder.jpg` |
-| 06 | Anchor | Offline-First · CRDTs · 2026 | https://anchor-ai-indol.vercel.app | codewithsupra/anchor.ai | `/anchor.jpg` |
-| 07 | Aria | Accessibility · AI · 2026 | https://aria-acess.vercel.app | codewithsupra/aria-acess.ai | `/aria.jpg` |
+| 01 | Sponsorbound | AI · Data pipeline · 2026 | https://h1bound.vercel.app | codewithsupra/h1bound | `/sponsorbound.jpg` |
+| 02 | Verdict | LLM Evals · Statistics · 2026 | https://verdict-pi-peach.vercel.app | codewithsupra/verdict | `/verdict.jpg` |
+| 03 | Daybrief | AI · Gmail API · 2026 | https://daybrief-puce.vercel.app/demo ("Try the demo") | codewithsupra/daybrief | `/daybrief.jpg` |
+| 04 | Persona Assist | AI agent · Telegram · 2026 | https://ai-assistant-d2gc.onrender.com | codewithsupra/ai-assistant | `/persona.jpg` |
+| 05 | Cairn | AI · Code editor · 2026 | https://cairn-swart-beta.vercel.app/try ("Try without signing in") | private repo, no link | `/cairn.jpg` |
+| 06 | Termpilot | AI agent · CLI · 2026 | none (terminal app) | codewithsupra/termpilot | none: shows the README's architecture diagram |
+
+Termpilot must always carry its credit: "Built by following Code with
+Antonio's nightcode tutorial; the README lists what I added or changed."
+(The project README says the architecture and most of the code come from
+that tutorial.)
 
 Descriptions and tech stacks are in `lib/content.ts`.
 
