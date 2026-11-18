@@ -118,31 +118,40 @@ export function ProjectCard({ project }: { project: Project }) {
               </li>
             ))}
           </ul>
+          {project.credit && (
+            <p data-reveal className="mt-4 max-w-[36rem] text-sm leading-relaxed text-muted">
+              {project.credit}
+            </p>
+          )}
           <p data-reveal className="mt-8 flex items-center gap-6 text-sm">
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep pb-1 text-accent"
-            >
-              Visit
-              <span className="sr-only">
-                {" "}
-                — {project.title} (opens in new tab)
-              </span>
-            </a>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep pb-1 text-accent"
-            >
-              GitHub
-              <span className="sr-only">
-                {" "}
-                — {project.title} (opens in new tab)
-              </span>
-            </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-sweep pb-1 text-accent"
+              >
+                {project.liveLabel ?? "Visit"}
+                <span className="sr-only">
+                  {" "}
+                  — {project.title} (opens in new tab)
+                </span>
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-sweep pb-1 text-accent"
+              >
+                GitHub
+                <span className="sr-only">
+                  {" "}
+                  — {project.title} (opens in new tab)
+                </span>
+              </a>
+            )}
           </p>
         </div>
 
@@ -151,15 +160,26 @@ export function ProjectCard({ project }: { project: Project }) {
           className="self-center overflow-hidden rounded-card border border-muted/20"
         >
           <motion.div variants={zoom}>
-            <Image
-              data-image
-              src={project.screenshot}
-              alt={project.alt}
-              width={1920}
-              height={1020}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="h-auto w-full"
-            />
+            {project.screenshot ? (
+              <Image
+                data-image
+                src={project.screenshot}
+                alt={project.alt}
+                width={1600}
+                height={900}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="h-auto w-full"
+              />
+            ) : (
+              <figure data-image className="bg-surface p-5">
+                <pre
+                  aria-label={project.alt}
+                  className="overflow-x-auto font-mono text-[11px] leading-snug text-muted"
+                >
+                  {project.diagram}
+                </pre>
+              </figure>
+            )}
           </motion.div>
         </div>
       </motion.article>

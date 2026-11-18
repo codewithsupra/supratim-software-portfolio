@@ -2,15 +2,25 @@
 // Every claim traces to a verified fact; every URL was loaded before it went in.
 
 export interface Project {
+  /** Stable key, used by the kiosk scene to place the project on its TV. */
+  id: string;
   index: string;
   title: string;
   tags: string[];
   description: string;
   tech: string[];
-  liveUrl: string;
-  githubUrl: string;
-  screenshot: string;
+  /** Absent for projects with nothing to open in a browser (Termpilot is a CLI). */
+  liveUrl?: string;
+  liveLabel?: string;
+  /** Absent when the repository is private (Cairn). */
+  githubUrl?: string;
+  /** Absent when there is no web page to capture; `diagram` is shown instead. */
+  screenshot?: string;
   alt: string;
+  /** Plain-text diagram copied from the project README, shown when there is no screenshot. */
+  diagram?: string;
+  /** Required attribution, e.g. a project built by following a tutorial. */
+  credit?: string;
 }
 
 export const hero = {
@@ -25,9 +35,9 @@ export const about = {
   eyebrow: "About me",
   heading: "An engineer who proves guarantees instead of asserting them.",
   stats: [
-    { value: "7", label: "Live systems, all open source" },
+    { value: "5", label: "Live products, shipped in 2026" },
     { value: "2", label: "Merged pull requests in Tiptap" },
-    { value: "38K", label: "Stars on the repo they landed in" },
+    { value: "39K", label: "Stars on the repo they landed in" },
   ],
   storyBeats: [
     {
@@ -43,12 +53,12 @@ export const about = {
     {
       index: "03",
       title: "Open source",
-      body: "I landed two pull requests in Tiptap, the rich-text framework with 38K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.",
+      body: "I landed two pull requests in Tiptap, the rich-text framework with 39K GitHub stars — fixing a Link-extension bug that had been open for seven months, and a defect that silently stripped bold and italic from indented numbered lists.",
     },
     {
       index: "04",
       title: "The craft",
-      body: "After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I built and shipped seven systems solo in 2026. The thread through all of them is correctness under failure: safe job claiming, crash recovery, and chaos tests — one engine ran 20 workflows through 187 random worker kills with every step succeeding exactly once.",
+      body: "After completing Zero To Mastery's Fullstack, Frontend, Backend and React career paths, I shipped a run of AI products in 2026. The thread through them is staying honest when things go wrong: Sponsorbound only calls an employer a licensed sponsor when the register link is confirmed, Verdict refuses to give a verdict it can't support, and Daybrief falls back to a rule-based plan when the model is down.",
     },
     {
       index: "05",
@@ -83,7 +93,21 @@ export const projectsSection = {
 
 export const projects: Project[] = [
   {
+    id: "sponsorbound",
     index: "01",
+    title: "Sponsorbound",
+    tags: ["AI", "Data pipeline", "2026"],
+    description:
+      "An AI job-search assistant for international students. It pulls about 9,300 vacancies from public job-board APIs, matches employers to 147,002 UK, Dutch and Irish visa-sponsor records, and only says \u201clicensed sponsor\u201d when the register link is confirmed.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Vercel AI SDK"],
+    liveUrl: "https://h1bound.vercel.app",
+    githubUrl: "https://github.com/codewithsupra/h1bound",
+    screenshot: "/sponsorbound.jpg",
+    alt: "Sponsorbound — landing page with a map of licensed visa sponsors across the UK, Netherlands and Ireland",
+  },
+  {
+    id: "verdict",
+    index: "02",
     title: "Verdict",
     tags: ["LLM Evals", "Statistics", "2026"],
     description:
@@ -95,77 +119,65 @@ export const projects: Project[] = [
     alt: "Verdict — comparison of two prompt revisions with a confidence interval and verdict",
   },
   {
-    index: "02",
-    title: "Lull",
-    tags: ["AI", "Web Audio", "2026"],
-    description:
-      "An AI-composed meditation studio: describe how you feel in one sentence and it writes a guided session, picks a breath pattern and plays a soundscape synthesized live with the Web Audio API — the app ships no audio files.",
-    tech: ["Next.js", "TypeScript", "InsForge", "Web Audio"],
-    liveUrl: "https://lull-ai.vercel.app",
-    githubUrl: "https://github.com/codewithsupra/lull",
-    screenshot: "/lull.jpg",
-    alt: "Lull — landing page with the wordmark over a particle field",
-  },
-  {
+    id: "daybrief",
     index: "03",
-    title: "Durable Agent Engine",
-    tags: ["Backend", "Queues", "2026"],
+    title: "Daybrief",
+    tags: ["AI", "Gmail API", "2026"],
     description:
-      "A crash-safe engine for multi-step AI-agent workflows, built on Postgres SKIP LOCKED — chaos-tested with 187 random worker kills across 20 runs.",
-    tech: ["Node.js", "PostgreSQL", "WebSockets"],
-    liveUrl:
-      "https://durable-agent-engine-b034212e-e938-4496-b3f0-50045a25b6f9.fly.dev",
-    githubUrl: "https://github.com/codewithsupra/durable-agent-engine",
-    screenshot: "/dae.jpg",
-    alt: "Durable Agent Engine — live run dashboard for a multi-step agent workflow",
+      "Reads your Gmail and where your browsing time went, then emails a ranked plan every morning. It drafts replies into Gmail but never sends mail, and a Chrome extension records time per site without page contents.",
+    tech: ["Next.js", "TypeScript", "Neon Postgres", "Chrome extension"],
+    liveUrl: "https://daybrief-puce.vercel.app/demo",
+    liveLabel: "Try the demo",
+    githubUrl: "https://github.com/codewithsupra/daybrief",
+    screenshot: "/daybrief.jpg",
+    alt: "Daybrief — dashboard with today's plan, attention chart and emails waiting on a reply",
   },
   {
+    id: "persona",
     index: "04",
-    title: "Pulse",
-    tags: ["Backend", "Monitoring", "2026"],
+    title: "Persona Assist",
+    tags: ["AI agent", "Telegram", "2026"],
     description:
-      "Uptime and incident monitoring where only one instance runs each health check, however many are deployed, with live status over WebSockets and 19 integration tests.",
-    tech: ["Node.js", "MongoDB", "Socket.io", "Docker"],
-    liveUrl: "https://pulse-wy6e.onrender.com",
-    githubUrl: "https://github.com/codewithsupra/pulse",
-    screenshot: "/pulse.jpg",
-    alt: "Pulse — uptime and incident monitoring dashboard",
+      "A Claude assistant that lives in Telegram. It looks up live data and builds files in a private sandbox per user, and every message passes a webhook-secret, sender and billing check before it reaches the model.",
+    tech: ["Hono", "TypeScript", "Neon Postgres", "Clerk"],
+    liveUrl: "https://ai-assistant-d2gc.onrender.com",
+    githubUrl: "https://github.com/codewithsupra/ai-assistant",
+    screenshot: "/persona.jpg",
+    alt: "Persona Assist — landing page with an example Telegram conversation",
   },
   {
+    id: "cairn",
     index: "05",
-    title: "OSS Finder",
-    tags: ["Full-Stack", "Web App", "2026"],
+    title: "Cairn",
+    tags: ["AI", "Code editor", "2026"],
     description:
-      "Ranks open-source projects by how likely they are to merge a first-time contributor's pull request.",
-    tech: ["React", "TypeScript", "Redux Toolkit", "RTK Query"],
-    liveUrl: "https://oss-finder-phi.vercel.app",
-    githubUrl: "https://github.com/codewithsupra/oss-finder",
-    screenshot: "/ossfinder.jpg",
-    alt: "OSS Finder — ranked list of open-source projects for first contributions",
+      "A browser-based AI workbench: describe what you want, an agent assembles the files, and you edit them in a live CodeMirror editor beside an in-browser preview. There is a no-login playground to try it.",
+    tech: ["Next.js", "Convex", "Clerk", "Inngest"],
+    liveUrl: "https://cairn-swart-beta.vercel.app/try",
+    liveLabel: "Try without signing in",
+    screenshot: "/cairn.jpg",
+    alt: "Cairn — code editor with a live preview and an AI prompt bar",
   },
   {
+    id: "termpilot",
     index: "06",
-    title: "Anchor",
-    tags: ["Offline-First", "CRDTs", "2026"],
+    title: "Termpilot",
+    tags: ["AI agent", "CLI", "2026"],
     description:
-      "A local-first note editor that saves every keystroke in the browser as a CRDT, works offline, and syncs open tabs live with no server.",
-    tech: ["TypeScript", "Yjs", "IndexedDB", "Tiptap"],
-    liveUrl: "https://anchor-ai-indol.vercel.app",
-    githubUrl: "https://github.com/codewithsupra/anchor.ai",
-    screenshot: "/anchor.jpg",
-    alt: "Anchor — offline-first note editor interface",
-  },
-  {
-    index: "07",
-    title: "Aria",
-    tags: ["Accessibility", "AI", "2026"],
-    description:
-      "WCAG auditing that pairs axe-core rule checks with GPT-4o Vision analysis of the rendered page, in one severity-graded report with suggested fixes.",
-    tech: ["Next.js", "TypeScript", "Puppeteer", "axe-core"],
-    liveUrl: "https://aria-acess.vercel.app",
-    githubUrl: "https://github.com/codewithsupra/aria-acess.ai",
-    screenshot: "/aria.jpg",
-    alt: "Aria — accessibility audit report interface",
+      "An AI coding agent in your terminal: chat with a model that reads, searches and edits files and runs commands on your machine, with a read-only Plan mode beside the full Build mode.",
+    tech: ["Bun", "TypeScript", "Hono", "Prisma"],
+    githubUrl: "https://github.com/codewithsupra/termpilot",
+    alt: "Termpilot — architecture: the terminal app runs tools locally while a Hono server streams the model reply",
+    diagram: ` terminal (CLI)                 server (Hono)              services
+┌───────────────────┐  SSE  ┌──────────────────────┐   ┌──────────────┐
+│ React UI (OpenTUI)│ ────▶ │ /chat  streams reply │ ─▶│ Claude /     │
+│ local tools:      │       │ /sessions            │   │ OpenAI /     │
+│  read, list, glob,│ ◀──── │ /billing  /auth      │ ─▶│ Gemini       │
+│  grep, edit, bash │ tool  └──────────────────────┘   │ Neon, Clerk, │
+└───────────────────┘ calls                            │ Polar        │
+                                                       └──────────────┘`,
+    credit:
+      "Built by following Code with Antonio's nightcode tutorial; the README lists what I added or changed.",
   },
 ];
 
@@ -234,7 +246,7 @@ export const footer = {
   elsewhereLabel: "Elsewhere",
   backToTop: "Back to top",
   copyright: "© 2026 Supratim Sarkar. All rights reserved.",
-  builtWith: "Built with Next.js, Three.js & WebGL. Design adapted from Jacinto Wong's portfolio.",
+  builtWith: "Built with Next.js, Three.js & WebGL. Scene inspired by Jesse Zhou's ramen shop portfolio; résumé view adapted from Jacinto Wong's portfolio.",
 };
 
 export const site = {
@@ -242,7 +254,7 @@ export const site = {
   logo: "SS",
   title: "Supratim Sarkar — Software Engineer",
   description:
-    "Software engineer building web products that stay correct under failure. Seven live systems, all open source.",
+    "Software engineer building AI products that stay honest when things go wrong. Five live products, shipped in 2026.",
   githubUrl: "https://github.com/codewithsupra",
   navLinks: [
     { label: "About", href: "#about" },

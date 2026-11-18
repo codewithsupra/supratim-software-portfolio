@@ -1,9 +1,7 @@
 "use client";
 
 /* eslint-disable react-hooks/immutability --
-   three.js objects here are built once and then mutated
-   on every animation frame inside useFrame. None of it is React state, so the compiler
-   rules about render purity do not apply. */
+   The composer and its passes are built once and driven every frame; not React state. */
 
 import { useEffect, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -13,24 +11,38 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
-import { finalPass } from "./shaders";
-import { flight } from "./store";
 
-/**
- * Render → bloom → tone map → a final pass for vignette, grain and warp aberration.
- * Everything that should glow is written brighter than 1.0 in linear space, so the bloom
- * threshold picks out the star, the engines and the lava without a separate glow layer.
- */
+const finish = {
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } },
+  vertexShader: /* glsl */ `
+    varying vec2 vUv;
+    void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }
+  `,
+  fragmentShader: /* glsl */ `
+    uniform sampler2D tDiffuse;
+    uniform float uTime;
+    varying vec2 vUv;
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+    void main() {
+      vec3 c = texture2D(tDiffuse, vUv).rgb;
+      float v = smoothstep(1.15, 0.25, length(vUv - 0.5) * 1.35);
+      c *= mix(0.55, 1.0, v);
+      c += (hash(vUv * 900.0 + uTime) - 0.5) * 0.022;
+      gl_FragColor = vec4(c, 1.0);
+    }
+  `,
+};
+
+/** Render → bloom (only what is brighter than 1.0 glows) → tone map → vignette and grain. */
 export function Effects({ bloomScale }: { bloomScale: number }) {
   const { gl, scene, camera, size } = useThree();
-
   const fx = useMemo(() => {
     const composer = new EffectComposer(gl);
     composer.addPass(new RenderPass(scene, camera));
-    const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.72, 0.55, 0.85);
+    const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.62, 0.5, 0.92);
     composer.addPass(bloom);
     composer.addPass(new OutputPass());
-    const fin = new ShaderPass(finalPass);
+    const fin = new ShaderPass(finish);
     composer.addPass(fin);
     return { composer, bloom, fin };
   }, [gl, scene, camera]);
@@ -40,15 +52,11 @@ export function Effects({ bloomScale }: { bloomScale: number }) {
     fx.composer.setSize(size.width, size.height);
     fx.bloom.resolution.set(size.width * bloomScale, size.height * bloomScale);
   }, [fx, gl, size, bloomScale]);
-
   useEffect(() => () => fx.composer.dispose(), [fx]);
 
   useFrame((_, dt) => {
     fx.fin.uniforms.uTime!.value += dt;
-    fx.fin.uniforms.uBoost!.value = flight.reduced ? 0 : flight.boost;
-    fx.bloom.strength = 0.72 + flight.boost * 0.45;
     fx.composer.render(dt);
   }, 1);
-
   return null;
 }

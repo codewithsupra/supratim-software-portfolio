@@ -1,14 +1,15 @@
-import { Universe } from "@/components/universe/universe";
+import { Kiosk } from "@/components/kiosk/kiosk";
 
 /**
- * The home page is a flyable solar system: the star is the About section, each planet a
- * project, a comet the open-source work and a relay station the contact details. The
- * same content in plain reading order lives at /classic, linked from the top bar.
+ * The home page is a neon repair kiosk at night: each TV behind the counter is a project,
+ * the radio is About, the lightbox is the Tiptap work and the mailbox is Contact. Every
+ * station is also in the top bar, and the same content in plain reading order lives at
+ * /classic ("Résumé view").
  */
 export default function Home() {
   return (
     <main id="main">
-      <Universe />
+      <Kiosk />
     </main>
   );
 }

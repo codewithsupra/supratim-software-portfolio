@@ -9,18 +9,26 @@ engineers. Its one job is to make that person get in touch.
 
 Two views of the same content (`lib/content.ts`):
 
-- `/` — a normal scrolling page (`components/universe/story.tsx`): hero,
-  about, one section per project, open source, contact — all readable with
-  no interaction. Behind it a Three.js solar system is scenery only (it never
-  takes the pointer): as each section reaches mid-viewport the ship flies to
-  its world — star = About, planets = projects, comet = Tiptap, relay =
-  Contact. Never hide content behind flying or clicking the scene.
+- `/` — a neon repair kiosk at night (`components/kiosk/`), inspired by Jesse
+  Zhou's ramen-shop portfolio (credited in the footer copy). Each CRT behind
+  the counter is a project, the radio is About, the Tiptap lightbox is the
+  open-source work, the mailbox is Contact, and the signpost points to all
+  four. Clicking an object glides the camera there and opens a readable DOM
+  panel (right side on desktop, bottom sheet on phones). Every station is also
+  a button in the top bar and has a URL hash (`#work`, `#work/<id>`, `#about`,
+  `#open-source`, `#contact`), Esc steps back, and a server-rendered sr-only
+  outline carries all the text. The scene never holds content hostage: if
+  WebGL is missing the panels still work from the top bar. The only motion
+  that plays unprompted is the neon flickering on at load (not a splash: no
+  click gate), CRT scanlines and slow dust.
 - `/classic` — the original four parts in page order: hero, about, project
-  grid, contact. Linked as "Résumé view" from the universe's top bar.
+  grid, contact. Linked as "Résumé view" from the kiosk's top bar.
 
-The universe uses only `three` and `@react-three/fiber` (post-processing is
-three's own `EffectComposer`). Scene colours live in
-`components/universe/palette.ts`; the UI still uses the CSS tokens only.
+The kiosk uses only `three` and `@react-three/fiber`: geometry is built in
+code (no model files), the wet floor is three's `Reflector`, orbiting is
+three's `OrbitControls`, and post-processing is three's own `EffectComposer`
+(bloom → output → vignette/grain). Scene colours live in
+`components/kiosk/palette.ts`; the UI still uses the CSS tokens only.
 
 ## Stack
 
